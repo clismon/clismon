@@ -1,10 +1,20 @@
 # clismon.net
 
-# Techniques
 
-## Resizeable background images
-http://css-tricks.com/how-to-resizeable-background-image/
-http://www.cssplay.co.uk/layouts/background.html
+## LICENSE
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/es/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/es/88x31.png" /></a><br />Esta obra est&#225; bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/es/">licencia de Creative Commons</a>.
+
+
+## Techniques
+
+Thanks to all the people!!
+
+### Resizeable background images
+(http://css-tricks.com/how-to-resizeable-background-image/)
+(http://www.cssplay.co.uk/layouts/background.html)
+
+### Misc
+(http://iain.nl/2009/05/writing-yaml-files/)
 
 
 
