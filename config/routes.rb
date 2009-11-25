@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :clips
+
   map.resources :posts, :as => 'blog', :collection => [:admin]
 
   map.root :controller => 'pages', :action => 'portada'

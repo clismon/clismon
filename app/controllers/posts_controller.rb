@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   inherit_resources
-
   actions :all, :except => 'show'
 
   def admin

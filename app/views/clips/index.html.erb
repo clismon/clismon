@@ -1,0 +1,24 @@
+<div class="page">
+  <h1>Subémelo todo</h1>
+
+  <div class="actions">
+    <%= link_to 'Volver a buahh!', admin_posts_path %>
+  </div>
+
+  <% form_for :clip, @clip, :url => clips_path, :html => { :multipart => true } do |form| %>
+  <h2>La cosa para subir</h2>
+    <%= form.file_field :media %>
+    <%= form.submit 'Dale duro!' %>
+  <% end %>
+
+  <table>
+    <% @clips.each do |clip| %>
+      <tr>
+        <td><%= link_to 'Show', clip %></td>
+        <td><%= link_to 'Edit', edit_clip_path(clip) %></td>
+        <td><%= link_to 'Destroy', clip, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>

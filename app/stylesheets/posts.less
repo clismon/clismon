@@ -1,15 +1,21 @@
 
 @import 'reset-min.css';
 
+@fondo: #f5e548;
+@gris: #5D6A8C;
+@oscuro: #B1A743;
+@oscurillo: #D3C646;
+
+
 .round {-webkit-border-radius: 0.5em; -moz-border-radius: 0.5em;}
 
 html {
     font-family: Verdana, sans;
-    background-color: #f5e548;
+    background-color: @fondo;
 }
 
 a {text-decoration: none; color: black;}
-h1, h2, h3 {color: #5D6A8C;}
+h1, h2, h3 {color: @gris;}
 
 
 h1 {font-size: 200%; margin: 0.5em 0;}
@@ -23,17 +29,22 @@ h1 {font-size: 200%; margin: 0.5em 0;}
     font-family: Garamond;
 }
 
-.actions {width: 100%; overflow: hidden;}
+.actions {width: 100%; overflow: hidden; margin: 1em 0;}
 .actions a {display: block; float: left; padding: 0.5em 1em; margin-right: 1em;
-           background-color: #B1A743; .round;}
-.actions a:hover {color: white;}
+           background-color: @oscurillo; .round;}
+.actions a:hover {color: white; background-color: @oscuro;}
+
+form {padding: 1em; 
+      border: 2px solid @oscuro; .round;
+    background-color: @oscurillo;}
 form p {
     font-family: Verdana, sans;
     width: 100%; overflow: hidden; margin: 0.5em 0;}
-
-form p input[type=text] {width: 80%; padding: 2px; border: 1px solid black;}
+form p input[type=text] {width: 80%; padding: 2px; border: 1px solid @oscuro;}
 form p input[type=submit] {margin-right: 1em;}
 form p label {display: block;}
 
 table {width: 100%; margin: 1em 0;}
+table tr {background-color: @oscurillo; }
+table td {padding: 0.2em 0.5em;}
 table a {text-decoration: underline;}
