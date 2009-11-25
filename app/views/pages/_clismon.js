@@ -16,6 +16,7 @@
         var current = bg_vertical ? $("#background").height() : $("#background").width();
         ratio = current / bg_size + 0.1;
         if (ratio > 1) { ratio = 1;}
+        console.log("RATIO: ", ratio);
         resizeSlide($("#current"), currentData);
     }
 

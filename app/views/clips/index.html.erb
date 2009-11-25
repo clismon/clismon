@@ -6,7 +6,7 @@
   </div>
 
   <% form_for :clip, @clip, :url => clips_path, :html => { :multipart => true } do |form| %>
-  <h2>La cosa para subir</h2>
+    <h2>La cosa para subir</h2>
     <%= form.file_field :media %>
     <%= form.submit 'Dale duro!' %>
   <% end %>
@@ -14,9 +14,14 @@
   <table>
     <% @clips.each do |clip| %>
       <tr>
-        <td><%= link_to 'Show', clip %></td>
-        <td><%= link_to 'Edit', edit_clip_path(clip) %></td>
-        <td><%= link_to 'Destroy', clip, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= image_tag clip.media.url(:thumb) %></td>
+        <td><%= clip.media.url %></td>
+        <td><%= clip.media.content_type %></td>
+        <td>subido hace <%= distance_of_time_in_words_to_now clip.created_at %></td>
+        <td>
+          <%= link_to 'Ver', clip.media.url %> | 
+          <%= link_to 'Borrar', clip, :confirm => 'Estás seguro!!!? No se puede deshacer!!', :method => :delete %>
+        </td>
       </tr>
     <% end %>
   </table>

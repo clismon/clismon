@@ -7,4 +7,11 @@ class ClipsController < ApplicationController
     @clip = Clip.new
     index!
   end
+
+  def create
+    create! do |success, failure|
+      success.html {redirect_to clips_path}
+      failure.html { render :action => 'index'}
+    end
+  end
 end
