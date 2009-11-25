@@ -7,12 +7,25 @@ groups:
     height: 707
     path: portada/portada-ancha.jpg
     width: 1488
-  - &id008 
+  - &id009 
     group: portada
     name: portada1200.jpg
     height: 1200
     path: portada/portada1200.jpg
     width: 2639
+  blog: 
+  - &id008 
+    group: blog
+    name: fondo-blog1.jpg
+    height: 524
+    path: blog/fondo-blog1.jpg
+    width: 760
+  - &id011 
+    group: blog
+    name: fondo-blog.jpg
+    height: 655
+    path: blog/fondo-blog.jpg
+    width: 950
   fondos: 
   - &id004 
     group: fondos
@@ -39,14 +52,14 @@ groups:
     height: 568
     path: dinero/a-trabajador-ideal.jpg
     width: 567
-  - &id009 
+  - &id010 
     group: dinero
     name: apocalipsis-grises.jpg
     height: 567
     path: dinero/apocalipsis-grises.jpg
     width: 803
   elotromundo: 
-  - &id010 
+  - &id012 
     group: elotromundo
     name: 1484-disney-wall.jpg
     height: 703
@@ -72,6 +85,8 @@ images:
   1437-peleas-en-parlamentos.jpg: *id005
   aa-comprando.jpg: *id006
   "1538-tonter\xC3\xADa-perfecta.jpg": *id007
-  portada1200.jpg: *id008
-  apocalipsis-grises.jpg: *id009
-  1484-disney-wall.jpg: *id010
+  fondo-blog1.jpg: *id008
+  portada1200.jpg: *id009
+  apocalipsis-grises.jpg: *id010
+  fondo-blog.jpg: *id011
+  1484-disney-wall.jpg: *id012
