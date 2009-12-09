@@ -7,14 +7,15 @@
 
 ## Techniques
 
-Thanks to all the people!!
+
 
 ### Resizeable background images
 (http://css-tricks.com/how-to-resizeable-background-image/)
+
 (http://www.cssplay.co.uk/layouts/background.html)
 
 ### Misc
 (http://iain.nl/2009/05/writing-yaml-files/)
 
 
-
+Thanks to all the people who help in internet!!
