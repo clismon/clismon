@@ -59,15 +59,11 @@
 
         $('.area').hover(function() {
           var id = '#' + $(this).attr('id').substring(3);
-          console.log("show ", id)
           $(id).show();
         }, function() {
           var id = '#' + $(this).attr('id').substring(3);
-          console.log("hide ", id)
           $(id).hide();
         });
-
-
       });
     })(jQuery);
   </script>
