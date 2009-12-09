@@ -6,9 +6,13 @@
     html, body {margin:0; padding:0; width:100%; height:100%; overflow: hidden; background-color: #aac2cc;}
     .layer {position:absolute; height:100%; right: -100px;}
     #background {z-index:1;}
-    #playground {width: 200px; z-index: 100;
+    #playground {width: 200px; z-index: 1000;
     }
-    .area {position: absolute; z-index: 200; text-indent: -1000px; overflow: hidden;}
+    .area {position: absolute; z-index: 200; text-indent: -1000px; overflow: hidden;
+    }
+    .tmp {
+      border: 1px solid red; opacity: 0.3;
+    }
   </style>
 
   <script type="text/javascript">
@@ -30,9 +34,14 @@
         ['muvirecor',1776, 840,78,82]
       ];
 
+      var layers = ['clismon', 'enalces', 'doplacie',
+        'historietas', 'las-buenas-noches', 'bueh', 'dinero', 'el-otro-mundo',
+        'enciclopedia-universal-clismon', 'memorias-de-la-tierra', 'delirios-por-encargo',
+        'muvirecor', 'portada-activa'];
+
       var eachLayer = function(callback) {
         $.each(layers, function(index) {
-          callback(index, this[0], this[1], this[2], this[3], this[4]);
+          callback(index, this);
         });
       };
       
@@ -51,18 +60,25 @@
           eachLayer(function(index, name) {
             var layer = $("<img id='" + name + "' />");
             layer.attr('src', '/images/portada/' + name + '.png');
-            layer.attr('class', 'layer');
-            layer.attr('style', 'z-index: ' + (50 + index) + '; display: none;');
+            layer.attr('class', 'layer label');
+            layer.attr('style', 'z-index: 50; display: none;');
             $("#wrap").append(layer);
           });
+          $("#clismon").show();
         });
 
-        $('.area').hover(function() {
+        $('.link').hover(function() {
           var id = '#' + $(this).attr('id').substring(3);
           $(id).show();
         }, function() {
           var id = '#' + $(this).attr('id').substring(3);
           $(id).hide();
+        });
+
+        $('#go-portada-activa').hover(function() {
+          $("#clismon").hide();
+        }, function() {
+          $("#clismon").show();
         });
       });
     })(jQuery);
@@ -71,19 +87,20 @@
 <% end -%>
 
 <div id="wrap">
-  <img id="background" src="/images/portada/portada1200.jpg" alt="background" class="layer" />
-  <div id="playground" class="layer">
-    <a id="go-enlaces" class="area" style="left: 38.1%; top: 69.59%; width: 3.08%; height: 7.4%; ">enlaces</a>
-    <a id="go-doplacie" class="area" style="left: 36.91%; top: 49.84%; width: 5.82%; height: 18.2%; ">doplacie</a>
-    <a id="go-historietas" class="area" style="left: 32.21%; top: 46.91%; width: 3.57%; height: 8.02%; ">historietas</a>
-    <a id="go-las-buenas-noches" class="area" style="left: 38.38%; top: 27.93%; width: 4.91%; height: 11.26%; ">las buenas noches</a>
-    <a id="go-bueh" class="area" style="left: 39.08%; top: 7.4%; width: 5.75%; height: 13.11%; ">bueh</a>
-    <a id="go-dinero" class="area" style="left: 52.98%; top: 1.85%; width: 6.03%; height: 15.74%; ">dinero</a>
-    <a id="go-el-otro-mundo" class="area" style="left: 57.05%; top: 17.9%; width: 6.03%; height: 10.18%; ">el otro mundo</a>
-    <a id="go-encliclopedia-universal-clismon" class="area" style="left: 65.05%; top: 27%; width: 2.24%; height: 5.7%; ">encliclopedia universal clismon</a>
-    <a id="go-memorias-de-la-tierra" class="area" style="left: 59.92%; top: 32.56%; width: 7.43%; height: 14.04%; ">memorias de la tierra</a>
-    <a id="go-delirios-por-encargo" class="area" style="left: 60.91%; top: 46.91%; width: 6.38%; height: 17.74%; ">delirios por encargo</a>
-    <a id="go-muvirecor" class="area" style="left: 62.31%; top: 64.81%; width: 2.73%; height: 6.32%; ">muvirecor</a>
-  </div>
+  <img id="background" src="/images/portada/portada.jpg" alt="background" class="layer" />
+</div>
+<div id="playground" class="layer">
+  <a id="go-enlaces" href="/enlaces" class="area link" style="z-index: 301; left: 38.1%; top: 69.59%; width: 3.08%; height: 7.4%; ">enlaces</a>
+  <a id="go-doplacie" href="/doplacie" class="area link" style="z-index: 301; left: 36.91%; top: 49.84%; width: 5.82%; height: 18.2%; ">doplacie</a>
+  <a id="go-historietas" href="/historietas" class="area link" style="z-index: 301; left: 32.21%; top: 46.91%; width: 3.57%; height: 8.02%; ">historietas</a>
+  <a id="go-las-buenas-noches" href="/lasbuenasnoches" class="area link" style="z-index: 301; left: 38.38%; top: 27.93%; width: 4.91%; height: 11.26%; ">las buenas noches</a>
+  <a id="go-bueh" class="area link" href="/bueh" style="z-index: 301; left: 39.08%; top: 7.4%; width: 5.75%; height: 13.11%; ">bueh</a>
+  <a id="go-dinero" class="area link" href="/dinero" style="z-index: 301; left: 52.98%; top: 1.85%; width: 6.03%; height: 15.74%; ">dinero</a>
+  <a id="go-el-otro-mundo" class="area link" href="/elotromundo" style="z-index: 301; left: 57.05%; top: 17.9%; width: 6.03%; height: 10.18%; ">el otro mundo</a>
+  <a id="go-enciclopedia-universal-clismon" href="/enciclopedia" class="area link" style="z-index: 301; left: 65.05%; top: 27%; width: 2.24%; height: 5.7%; ">encliclopedia universal clismon</a>
+  <a id="go-memorias-de-la-tierra" class="area link" href="/tierra" style="z-index: 301; left: 59.92%; top: 32.56%; width: 7.43%; height: 14.04%; ">memorias de la tierra</a>
+  <a id="go-delirios-por-encargo" class="area link" href="/encargos" style="z-index: 301; left: 60.91%; top: 46.91%; width: 6.38%; height: 17.74%; ">delirios por encargo</a>
+  <a id="go-muvirecor" class="area link" href="/mucirecor" style="z-index: 301; left: 62.31%; top: 64.81%; width: 2.73%; height: 6.32%; ">muvirecor</a>
+  <a id="go-portada-activa" class="area link" href="#" style="z-index: 3001; left: 71%; top: 65%; width: 16%; height: 31%; ">clismon</a>
 </div>
 
