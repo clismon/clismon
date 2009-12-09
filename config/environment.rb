@@ -13,7 +13,7 @@ Rails::Initializer.run do |config|
   config.gem 'paperclip', :source => 'http://gemcutter.org'
 
   config.action_controller.resources_path_names = { :new => 'nuevo', :edit => 'cambiar' }
-
+  config.action_controller.page_cache_directory = RAILS_ROOT + "/public/cache/"
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   config.i18n.default_locale = :es
 end

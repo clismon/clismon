@@ -3,14 +3,14 @@
 
 <% content_for :head do %>
   <style type="text/css">
-    html, body {margin:0; padding:0; width:100%; height:100%; overflow: hidden; background-color: #aac2cc;}
+    html, body {margin:0; padding:0; width:100%; height:100%; overflow: hidden; background-color: #B9CDD8;}
     .layer {position:absolute; height:100%; right: -100px;}
     #background {z-index:1;}
     #playground {width: 200px; z-index: 1000;
     }
     .area {position: absolute; z-index: 200; text-indent: -1000px; overflow: hidden;
     }
-    .tmp {
+    .red {
       border: 1px solid red; opacity: 0.3;
     }
   </style>
@@ -20,30 +20,11 @@
       var bgHeight = 1296;
       var bgWidth = 2850;
 
-      var layers =[
-        ['enlaces', 1086,902,88,96],
-        ['doplacie',1052,646,166,236],
-        ['historietas',918,608,102,104],
-        ['las-buenas-noches',1094,362,140,146],
-        ['bueh',1114,96,164,170],
-        ['dinero',1510,24,172,204],
-        ['el-otro-mundo',1626,232,172,132],
-        ['encliclopedia-universal-clismon',1854,350,64,74],
-        ['memorias-de-la-tierra',1708,422,212,182],
-        ['delirios-por-encargo',1736,608,182,230],
-        ['muvirecor',1776, 840,78,82]
-      ];
-
-      var layers = ['clismon', 'enalces', 'doplacie',
+      var layers = ['clismon', 'enlaces', 'doplacie',
         'historietas', 'las-buenas-noches', 'bueh', 'dinero', 'el-otro-mundo',
         'enciclopedia-universal-clismon', 'memorias-de-la-tierra', 'delirios-por-encargo',
         'muvirecor', 'portada-activa'];
 
-      var eachLayer = function(callback) {
-        $.each(layers, function(index) {
-          callback(index, this);
-        });
-      };
       
       $(function() {
         var ratio = 0;
@@ -57,9 +38,9 @@
         $(window).trigger('resize');
 
         $(window).load(function() {
-          eachLayer(function(index, name) {
-            var layer = $("<img id='" + name + "' />");
-            layer.attr('src', '/images/portada/' + name + '.png');
+          $.each(layers, function() {
+            var layer = $("<img id='" + this + "' />");
+            layer.attr('src', '/images/portada/' + this + '.png');
             layer.attr('class', 'layer label');
             layer.attr('style', 'z-index: 50; display: none;');
             $("#wrap").append(layer);
@@ -93,7 +74,7 @@
   <a id="go-enlaces" href="/enlaces" class="area link" style="z-index: 301; left: 38.1%; top: 69.59%; width: 3.08%; height: 7.4%; ">enlaces</a>
   <a id="go-doplacie" href="/doplacie" class="area link" style="z-index: 301; left: 36.91%; top: 49.84%; width: 5.82%; height: 18.2%; ">doplacie</a>
   <a id="go-historietas" href="/historietas" class="area link" style="z-index: 301; left: 32.21%; top: 46.91%; width: 3.57%; height: 8.02%; ">historietas</a>
-  <a id="go-las-buenas-noches" href="/lasbuenasnoches" class="area link" style="z-index: 301; left: 38.38%; top: 27.93%; width: 4.91%; height: 11.26%; ">las buenas noches</a>
+  <a id="go-las-buenas-noches" href="http://lasbuenasnoches.com" class="area link" style="z-index: 301; left: 38.38%; top: 27.93%; width: 4.91%; height: 11.26%; ">las buenas noches</a>
   <a id="go-bueh" class="area link" href="/bueh" style="z-index: 301; left: 39.08%; top: 7.4%; width: 5.75%; height: 13.11%; ">bueh</a>
   <a id="go-dinero" class="area link" href="/dinero" style="z-index: 301; left: 52.98%; top: 1.85%; width: 6.03%; height: 15.74%; ">dinero</a>
   <a id="go-el-otro-mundo" class="area link" href="/elotromundo" style="z-index: 301; left: 57.05%; top: 17.9%; width: 6.03%; height: 10.18%; ">el otro mundo</a>

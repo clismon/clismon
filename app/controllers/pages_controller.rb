@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   layout 'clismon'
-  
+
+  after_filter :cache_page
+
   def portada
   end
 
@@ -18,5 +20,8 @@ class PagesController < ApplicationController
     @background = Imagify.image('neuronas1-1200.jpg')
     @images = Imagify.group('elotromundo')
     render :action => 'slideshow'
+  end
+
+  def workinprogress
   end
 end
