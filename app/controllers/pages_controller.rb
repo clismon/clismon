@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @group = 'dinero'
     @background_color = 'white'
     @background = Imagify.image('fondo-dinero.jpg')
+    @background_resizes_on = 'height'
     @images = Imagify.group('dinero')
     render :action => 'slideshow'
   end
@@ -18,6 +19,7 @@ class PagesController < ApplicationController
     @group = 'elotromundo'
     @background_color = 'black'
     @background = Imagify.image('neuronas1-1200.jpg')
+    @background_resizes_on = 'width'
     @images = Imagify.group('elotromundo')
     render :action => 'slideshow'
   end
