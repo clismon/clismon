@@ -19,27 +19,40 @@ module LayersHelper
       @background = name
     end
 
-    def layers(layers)
-      @layers += layers
+    def layer(name,x,y,width,height)
+      @layers << Layer.new(name,x,y,width,height)
     end
 
     def draw
-      result = draw_layer('background', @background, 'background')
-      @layers.each do |name|
-        result << draw_layer(name, name + '.png', name.gsub(/-/, ' '), 'activable', 'display: none;')
-      end
+      result = "<img id='background' src='#{@base}#{@background}' alt='background' class='layer' />"
+      result << @layers.map{|layer| layer.draw(@base)}.join('')
       result.gsub(/'/, '"')
     end
 
     def draw_css
       result = ''
-      @layers.each_with_index {|name, index| result << "##{name} {z-index: #{index + 2}; }\n" }
+      @layers.each_with_index {|layer, index| result << "##{layer.name} {z-index: #{index + 2}; }\n" }
       result
     end
 
     private
-    def draw_layer(id, file, alt, css_class = '', style = '')
-      "<img id='#{id}' src='#{@base}#{file}' alt='#{alt}' class='layer #{css_class}' style='#{style}' />\n"
+
+  end
+
+  class Layer
+    attr_accessor :name, :x, :y, :width, :height
+    def initialize(name, x, y, width, height)
+      @name = name
+      @x = x
+      @y = y
+      @width = width
+      @height = height
+    end
+
+    def draw(base)
+      <<-html
+      <img id='#{name}' src='#{base}#{name}.png' alt='#{@name.gsub(/-/, ' ')}' class='layer activable' style='display: none' />
+      html
     end
   end
 end

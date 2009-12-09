@@ -1,37 +1,93 @@
 
-<% layers = define_layers('/images/portada/', 2850, 1296) do |layers| %>
-  <% layers.background('portada1200.jpg') %>
-  <% layers.layers(%w(enlaces doplacie historietas las-buenas-noches)) %>
-  <% layers.layers(%w(bueh dinero el-otro-mundo encliclopedia-universal-clismon)) %>
-  <% layers.layers(%w(memorias-de-la-tierra delirios-por-encargo muvirecor)) %>
-<% end %>
+
 
 <% content_for :head do %>
   <style type="text/css">
-    html, body {margin:0; padding:0; width:100%; height:100%; overflow: hidden;}
-    html {background-color: #aac2cc;}
-    .layer {position:absolute; height:100%; right: 0px;}
+    html, body {margin:0; padding:0; width:100%; height:100%; overflow: hidden; background-color: #aac2cc;}
+    .layer {position:absolute; height:100%; right: -100px;}
     #background {z-index:1;}
-    <%= layers.draw_css %>
-    .activearea{position: absolute; z-index: 20; border: 1px solid red; text-indent: -1000px; overflow: hidden;}
+    #playground {width: 200px; z-index: 100;
+    }
+    .area {position: absolute; z-index: 200; text-indent: -1000px; overflow: hidden;}
   </style>
 
   <script type="text/javascript">
-    $(function() {
-      $(".activable:first").addClass('current').show();
+    (function() {
+      var bgHeight = 1296;
+      var bgWidth = 2850;
 
-      $(document).click(function() {
-        $('.current').hide().removeClass('current').next().addClass('current').show();
-        if ($('.current').size() == 0) {
-          $(".activable:first").addClass('current').show();
-        }
+      var layers =[
+        ['enlaces', 1086,902,88,96],
+        ['doplacie',1052,646,166,236],
+        ['historietas',918,608,102,104],
+        ['las-buenas-noches',1094,362,140,146],
+        ['bueh',1114,96,164,170],
+        ['dinero',1510,24,172,204],
+        ['el-otro-mundo',1626,232,172,132],
+        ['encliclopedia-universal-clismon',1854,350,64,74],
+        ['memorias-de-la-tierra',1708,422,212,182],
+        ['delirios-por-encargo',1736,608,182,230],
+        ['muvirecor',1776, 840,78,82]
+      ];
+
+      var eachLayer = function(callback) {
+        $.each(layers, function(index) {
+          callback(index, this[0], this[1], this[2], this[3], this[4]);
+        });
+      };
+      
+      $(function() {
+        var ratio = 0;
+        var self = $(window);
+
+        $(window).resize(function() {
+          ratio = bgHeight / self.height();
+          $("#playground").width(parseInt(bgWidth / ratio));
+        });
+
+        $(window).trigger('resize');
+
+        $(window).load(function() {
+          eachLayer(function(index, name) {
+            var layer = $("<img id='" + name + "' />");
+            layer.attr('src', '/images/portada/' + name + '.png');
+            layer.attr('class', 'layer');
+            layer.attr('style', 'z-index: ' + (50 + index) + '; display: none;');
+            $("#wrap").append(layer);
+          });
+        });
+
+        $('.area').hover(function() {
+          var id = '#' + $(this).attr('id').substring(3);
+          console.log("show ", id)
+          $(id).show();
+        }, function() {
+          var id = '#' + $(this).attr('id').substring(3);
+          console.log("hide ", id)
+          $(id).hide();
+        });
+
+
       });
-    })
+    })(jQuery);
   </script>
 
 <% end -%>
 
 <div id="wrap">
-  <%= layers.draw %>
+  <img id="background" src="/images/portada/portada1200.jpg" alt="background" class="layer" />
+  <div id="playground" class="layer">
+    <a id="go-enlaces" class="area" style="left: 38.1%; top: 69.59%; width: 3.08%; height: 7.4%; ">enlaces</a>
+    <a id="go-doplacie" class="area" style="left: 36.91%; top: 49.84%; width: 5.82%; height: 18.2%; ">doplacie</a>
+    <a id="go-historietas" class="area" style="left: 32.21%; top: 46.91%; width: 3.57%; height: 8.02%; ">historietas</a>
+    <a id="go-las-buenas-noches" class="area" style="left: 38.38%; top: 27.93%; width: 4.91%; height: 11.26%; ">las buenas noches</a>
+    <a id="go-bueh" class="area" style="left: 39.08%; top: 7.4%; width: 5.75%; height: 13.11%; ">bueh</a>
+    <a id="go-dinero" class="area" style="left: 52.98%; top: 1.85%; width: 6.03%; height: 15.74%; ">dinero</a>
+    <a id="go-el-otro-mundo" class="area" style="left: 57.05%; top: 17.9%; width: 6.03%; height: 10.18%; ">el otro mundo</a>
+    <a id="go-encliclopedia-universal-clismon" class="area" style="left: 65.05%; top: 27%; width: 2.24%; height: 5.7%; ">encliclopedia universal clismon</a>
+    <a id="go-memorias-de-la-tierra" class="area" style="left: 59.92%; top: 32.56%; width: 7.43%; height: 14.04%; ">memorias de la tierra</a>
+    <a id="go-delirios-por-encargo" class="area" style="left: 60.91%; top: 46.91%; width: 6.38%; height: 17.74%; ">delirios por encargo</a>
+    <a id="go-muvirecor" class="area" style="left: 62.31%; top: 64.81%; width: 2.73%; height: 6.32%; ">muvirecor</a>
+  </div>
 </div>
 
