@@ -4,23 +4,13 @@ es:
     models:
       clip: "clip"
       post: "entrada"
+      group: "grupo"
     attributes:
-      account:
-        number: "Número de cuenta"
-        entity_code: "Número de entidad"
-        office_code: "Número de oficina"
-        control_code: "Número de control"
-        name: "Nombre de la cuenta"
-        address: "Dirección"
-        owner: "Titular"
-        owner_address: "Dirección del titular"
-        bic: "BIC"
-        iban: "IBAN"
-      tag:
+      group:
         name: "Nombre"
-        color: "Color"
-      movement:
-        tags: "Etiquetas"
+        title: "Título"
+        section: "Es una sección"
+        resize_method: "Cómo se pone el fondo"
 
   formtastic:
     actions:

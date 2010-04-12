@@ -2,8 +2,20 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 es:
-  app: "Clismón"
+  app:
+    name: "Clismón"
+    cancel: "Cancelar"
+    edit: "Modificar"
+    view: "Ver"
 
   groups:
+    index:
+      title: "Archivos"
     show:
-      title: "Archivos de '{{group}}'"
+      title: "Grupo '{{group}}'"
+      clips: "Archivos"
+    edit:
+      title: "Editar grupo '{{group}}'"
+    group:
+      name: "Nombre"
+      

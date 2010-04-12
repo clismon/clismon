@@ -1,8 +1,8 @@
 class CreateClips < ActiveRecord::Migration
   def self.up
     create_table :clips do |t|
-      t.string :name
-      t.string :group, :length => 40
+      t.string :name, :required => true
+      t.references :group, :required => true
       t.integer :position
       t.integer :width, :default => 0
       t.integer :height, :default => 0

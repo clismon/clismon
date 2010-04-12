@@ -1,12 +1,15 @@
 <div class="page">
-  <%= title t('.title', :group => @group.name) %>
-
-  <div class="actions">
+  <div class="groups">
     <% @groups.each do |group|  %>
-      <%= link_to group.name, group %>
+      <%= link_to group.title, group %>
     <% end %>
   </div>
 
+  <%= title t('.title', :group => @group.title) %>
+
+  <%= render @group %>
+
+  <h2><%= t('.clips') %></h2>
   <%= render :partial => 'clips/clips', :object => @group.clips %>
 
 </div>

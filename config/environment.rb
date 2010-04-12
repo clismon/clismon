@@ -11,7 +11,8 @@ Rails::Initializer.run do |config|
 
   config.gem 'inherited_resources', :source => 'http://gemcutter.org'
   config.gem 'paperclip', :source => 'http://gemcutter.org'
-
+  config.gem 'formtastic'
+  
   config.action_controller.resources_path_names = { :new => 'nuevo', :edit => 'cambiar' }
   config.action_controller.page_cache_directory = RAILS_ROOT + "/public/cache/"
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]

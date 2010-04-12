@@ -1,34 +1,26 @@
-
-class Group
-  NAMES = ['blog', 'dinero', 'doplacie', 'elotromundo', 'encargos', 'enciclopedia', 'enlaces', 'historietas', 'muvirecor', 'tierra']
-  BY_NAME = {}
-  GROUPS = []
-
-  def initialize(name)
-    @name = name
-    GROUPS << self
-    BY_NAME[name] = self
-  end
-
-  def clips
-    Clip.find(:all, :conditions => {:group => @name}, :order => 'position')
-  end
-
-  def name
-    @name
-  end
+class Group < ActiveRecord::Base
+  has_many :clips
+  belongs_to :background, :class_name => 'Clip'
+  before_save :create_title
 
   def to_param
-    @name
-  end
-  
-  def self.all
-    GROUPS
+    name
   end
 
-  def self.find(name)
-    Group::BY_NAME[name]
+  def background_url
+    self.background.media.url if self.background_id
   end
 
-  NAMES.each {|n| Group.new(n)}
+  def background_width
+    self.background.width if self.background_id
+  end
+
+  def background_height
+    self.background.height if self.background_id
+  end
+
+  private
+  def create_title
+    self.title = self.name if self.title.nil?
+  end
 end
