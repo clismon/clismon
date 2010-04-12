@@ -1,6 +1,7 @@
 photoshop
 log/*
 tmp/*
+content
 config/database.yml
 config/wecex.yml
 config/git.yml

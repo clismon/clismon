@@ -12,6 +12,11 @@
 ActiveRecord::Schema.define(:version => 20091125113330) do
 
   create_table "clips", :force => true do |t|
+    t.string   "name"
+    t.string   "group"
+    t.integer  "position"
+    t.integer  "width",              :default => 0
+    t.integer  "height",             :default => 0
     t.string   "media_file_name"
     t.string   "media_content_type"
     t.integer  "media_file_size"
