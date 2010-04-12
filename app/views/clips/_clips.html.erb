@@ -1,0 +1,17 @@
+<table>
+  <% clips.each do |clip| %>
+    <tr>
+      <td><%= clip.position %></td>
+      <td><%= image_tag clip.media.url(:thumb) %></td>
+      <td><%= clip.name %></td>
+      <td><%= clip.group %></td>
+      <td><%= clip.media.url %></td>
+      <td><%= clip.media.content_type %> (<%= clip.width %>x<%= clip.height %>)</td>
+      <td>subido hace <%= distance_of_time_in_words_to_now clip.created_at %></td>
+      <td>
+        <%= link_to 'Ver', clip.media.url %> |
+        <%= link_to 'Borrar', clip, :confirm => 'Estás seguro!!!? No se puede deshacer!!', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

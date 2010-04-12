@@ -1,0 +1,9 @@
+<div class="page">
+  <h1>Archivos por secciones</h1>
+
+  <div class="actions">
+    <% @groups.each do |group|  %>
+      <%= link_to group.name, group %>
+    <% end %>
+  </div>
+</div>

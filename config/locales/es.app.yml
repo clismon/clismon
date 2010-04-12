@@ -3,3 +3,7 @@
 
 es:
   app: "Clismón"
+
+  groups:
+    show:
+      title: "Archivos de '{{group}}'"

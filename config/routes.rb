@@ -3,15 +3,18 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :posts, :as => 'bueh', :collection => [:admin]
 
+  map.resources :groups, :as => 'g' do |group|
+    map.resources :clips, :controller => 'group_clips', :as => 'clips'
+  end
+
   map.root :controller => 'pages', :action => 'portada'
-  map.dinero '/enlaces', :controller => 'pages', :action => 'workinprogress'
-  map.dinero '/doplacie', :controller => 'pages', :action => 'workinprogress'
-  map.dinero '/historietas', :controller => 'pages', :action => 'workinprogress'
-  map.dinero '/dinero', :controller => 'pages', :action => 'dinero'
-  map.dinero '/elotromundo', :controller => 'pages', :action => 'elotromundo'
-  map.dinero '/enciclopedia', :controller => 'pages', :action => 'workinprogress'
-  map.dinero '/tierra', :controller => 'pages', :action => 'workinprogress'
-  map.dinero '/encargos', :controller => 'pages', :action => 'workinprogress'
-  map.dinero '/mucirecor', :controller => 'pages', :action => 'workinprogress'
-  map.dinero '/enlaces', :controller => 'pages', :action => 'workinprogress'
+  map.enlaces '/enlaces', :controller => 'pages', :action => 'workinprogress'
+  map.doplacie '/doplacie', :controller => 'pages', :action => 'group', :id => 'doplacie'
+  map.historietas '/historietas', :controller => 'pages', :action => 'group', :id => 'historietas'
+  map.dinero '/dinero', :controller => 'pages', :action => 'group', :id => 'dinero'
+  map.elotromundo '/elotromundo', :controller => 'pages', :action => 'group', :id=> 'elotromundo'
+  map.enciclopedia '/enciclopedia', :controller => 'pages', :action => 'workinprogress'
+  map.tierra '/tierra', :controller => 'pages', :action => 'workinprogress'
+  map.encargos '/encargos', :controller => 'pages', :action => 'workinprogress'
+  map.muvirecor '/muvirecor', :controller => 'pages', :action => 'workinprogress'
 end
