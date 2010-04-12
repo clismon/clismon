@@ -10,7 +10,7 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
 
   config.gem 'inherited_resources', :source => 'http://gemcutter.org'
-  config.gem 'paperclip', :source => 'http://gemcutter.org'
+  config.gem 'paperclip', :version => '2.3.1.1', :source => 'http://gemcutter.org'
   config.gem 'formtastic'
   
   config.action_controller.resources_path_names = { :new => 'nuevo', :edit => 'cambiar' }
