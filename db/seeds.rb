@@ -32,9 +32,11 @@ class Importer
   end
 
   def prepare_directories
-    @output = RAILS_ROOT + "/public/miscosillas"
-    FileUtils.remove_dir @output if File.exist?(@output)
-    Dir.mkdir(@output) 
+    if RAILS_ENV != 'production'
+      @output = RAILS_ROOT + "/public/miscosillas"
+      FileUtils.remove_dir @output if File.exist?(@output)
+      Dir.mkdir(@output)
+    end
   end
 
 
