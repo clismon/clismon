@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20091125113330) do
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.string   "color",         :default => "#FFFFFF"
+    t.string   "color",         :default => "#000"
     t.boolean  "section",       :default => true
     t.string   "resize_method", :default => "height"
     t.integer  "background_id"
@@ -40,7 +40,9 @@ ActiveRecord::Schema.define(:version => 20091125113330) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.text     "body"
+    t.string   "body"
+    t.string   "content_type", :default => "text/html"
+    t.string   "state",        :default => "published"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

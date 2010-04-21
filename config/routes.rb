@@ -1,13 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :clips
 
-  map.resources :posts, :as => 'bueh', :collection => [:admin]
+  map.root :controller => 'pages', :action => 'portada'
+
+  map.blog '/bueh', :controller => 'buah', :action => 'index'
+  map.buah '/bueh/:id', :controller => 'buah', :action => 'show'
+  map.resources :posts, :as => 'blog', :path_prefix => "admin"
+  map.resources :clips
 
   map.resources :groups, :as => 'archivo' do |group|
     map.resources :clips, :controller => 'group_clips', :as => 'clips'
   end
 
-  map.root :controller => 'pages', :action => 'portada'
   map.enlaces '/enlaces', :controller => 'pages', :action => 'enlaces'
   map.doplacie '/doplacie', :controller => 'pages', :action => 'section', :id => 'doplacie'
   map.historietas '/historietas', :controller => 'pages', :action => 'section', :id => 'historietas'

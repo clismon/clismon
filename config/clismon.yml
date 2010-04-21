@@ -1,0 +1,6 @@
+
+development:
+  background_group_id: 21
+
+production:
+  background_group_id: 1

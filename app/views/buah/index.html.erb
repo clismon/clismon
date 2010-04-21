@@ -1,0 +1,6 @@
+<div class="page posts">
+  <%= image_tag 'blog/fondo-blog1.jpg', :class => 'noborder' %>
+  <% @posts.each do |post| %>
+    <%= render post %>
+  <% end %>
+</div>

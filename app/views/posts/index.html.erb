@@ -1,6 +1,21 @@
-<div class="page posts">
-  <%= image_tag 'blog/fondo-blog1.jpg', :class => 'noborder' %>
-  <% @posts.each do |post| %>
-    <%= render post %>
-  <% end %>
+
+<div class="page">
+
+  <h1>A ver qué hacemos aquí</h1>
+  <div class="actions">
+    <%= link_to 'Más buah!', new_post_path %>
+    <%= link_to 'Subir cosillas', clips_path %>
+    <%= link_to '¿Cómo quedó?', buah_path %>
+  </div>
+  <table>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.title, edit_post_path(post) %></td>
+        <td>plantao hace <%= distance_of_time_in_words_to_now post.created_at %></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end -%>
+  </table>
 </div>
+
