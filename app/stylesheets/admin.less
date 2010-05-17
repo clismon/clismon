@@ -1,0 +1,67 @@
+
+@import 'reset-min.css';
+
+@page_width: 1000px;
+@site_width: 140px;
+@grisclaro: #F0F0F0;
+@gris: #E1E4E4;
+@grisoscuro: gray;
+@rojo: #990000;
+@verde: #008800;
+
+@serif: Georgia, Cambria, Times, serif;
+@sans: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Verdana, Tahoma, sans-serif;
+@font-small: 80%;
+
+html {
+    font-size: 90%;
+    font-family: @serif;
+    background-color: @grisclaro;
+}
+
+html, body {height: 100%; width: 100%;}
+a {color: black; text-decoration: none;}
+a:hover {text-decoration: underline;}
+
+h1, h2, h3, h4 {font-family: @serif;}
+h2 {font-size: 150%; margin: 1em 0 0.5em 0;}
+
+#user {text-align: right; width: @page_width; margin: 30px auto 3px auto; }
+#legal {clear: both; margin-top: 3px; height: 7em; font-size: 80%; letter-spacing: 0.2em; text-align: center; font-family: @sans; color: @grisoscuro;}
+#legal a {letter-spacing: 0.5em; color: @grisoscuro;}
+#page {
+    padding: 20px;
+    width: @page_width;
+    margin: 0px auto;
+    background-color: white;
+    border: 1px solid @gris;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    overflow: hidden;
+}
+#sitebar { float: left; width: @site_width; }
+#sitebar ul {border-bottom: 1px solid @gris;}
+#sitebar li {font-family: @sans; border-top: 1px solid @gris;}
+#sitebar li.top {font-size: 130%; }
+#sitebar li a {display: block; padding: 5px 15px; }
+#sitebar li.top a {padding: 5px 5px;}
+#sitebar li a:hover {text-decoration: none; background-color: @grisclaro;}
+
+#content {margin-left: @site_width + 20;}
+#top {font-family: @serif; margin-left: @site_width + 20; padding-bottom: 20px;}
+#top h1 {font-size: 200%; margin-bottom: 10px;}
+#top h2 {font-size: 130%;margin-bottom: 5px;}
+
+.actions {margin-bottom: 5px;font-family: @sans; font-size: @font-small;}
+.actions a {color: @grisoscuro; margin-right: 1em;}
+
+table tr.odd {background-color: @grisclaro;}
+table td {padding: 5px 2px;}
+
+ul.group {padding: 1em; background-color: @grisclaro;}
+ul.group li {margin: 5px 0;}
+
+fieldset li {width: 100%; overflow: hidden; margin: 5px 0;}
+fieldset li label {width: 9em; text-align: right; float: left; padding-right: 1em;}
+fieldset li.boolean input {margin-left: 9em; margin-right: 0.5em;}
+fieldset li.boolean label {padding-left: 1em; float: none;}

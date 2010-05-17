@@ -1,4 +1,8 @@
 <ul class="group">
+  <li class="actions">
+    <%= link_to( t('app.view'), {:controller => 'pages', :action => 'section', :id => group.name} ) if group.section? %>
+    <%= link_to t('app.edit'), edit_group_path(group) %>
+  </li>
   <li><label><%= Group.human_attribute_name(:title)%>: </label><%= group.title %></li>
   <li><label><%= Group.human_attribute_name(:name)%>: </label><%= group.name %></li>
   <li><label><%= Group.human_attribute_name(:color)%>: </label><%= group.color %></li>
@@ -11,8 +15,4 @@
       <%= image_tag group.background.media.url(:thumb) %>
     </li>
   <% end %>
-  <li class="actions">
-    <%= link_to( t('app.view'), {:controller => 'pages', :action => 'section', :id => group.name} ) if group.section? %>
-    <%= link_to t('app.edit'), edit_group_path(group) %>
-  </li>
 </ul>

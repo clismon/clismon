@@ -1,6 +1,6 @@
 <table>
   <% clips.each do |clip| %>
-    <tr>
+    <tr class="<%= cycle('even', 'odd') %>">
       <td><%= clip.position %></td>
       <td><%= image_tag clip.media.url(:thumb) %></td>
       <td><%= clip.name %></td>

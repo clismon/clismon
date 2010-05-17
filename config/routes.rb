@@ -4,14 +4,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.blog '/bueh', :controller => 'buah', :action => 'index'
   map.buah '/bueh/:id', :controller => 'buah', :action => 'show'
-  map.resources :posts, :as => 'blog', :path_prefix => "admin"
+  map.resources :posts, :as => 'blog'
   map.resources :clips
 
-  map.resources :groups, :as => 'archivo' do |group|
+  map.resources :groups, :as => 'admin' do |group|
     map.resources :clips, :controller => 'group_clips', :as => 'clips'
   end
 
-  map.enlaces '/enlaces', :controller => 'pages', :action => 'enlaces'
+  map.enlaces '/lecrou', :controller => 'pages', :action => 'section', :id => 'lecrou'
   map.doplacie '/doplacie', :controller => 'pages', :action => 'section', :id => 'doplacie'
   map.historietas '/historietas', :controller => 'pages', :action => 'section', :id => 'historietas'
   map.dinero '/dinero', :controller => 'pages', :action => 'section', :id => 'dinero'

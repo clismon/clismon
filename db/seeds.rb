@@ -6,13 +6,10 @@ class Importer
     prepare_directories
 
     fondos = Group.create!(:name => 'fondos', :section => false)
-    Group.create!(:name => 'blog', :section => false)
-    Group.create!(:name => 'dinero', :title => 'Dinero', :section => true, :resize_method => 'height', :color => '#FAC9C2')
 
     @images = RAILS_ROOT + "/content/images/"
     @posts = RAILS_ROOT + "/content/posts"
     
-    import_posts(@posts, load_entries(@posts, 'txt'))
     import_images(@images, load_entries(@images, 'jpg'))
 
     @vacio = Clip.find_by_group_id_and_name(fondos.id, 'vacio')
@@ -58,17 +55,6 @@ class Importer
       clip.group = Group.find_or_create_by_name(group)
       clip.media.reprocess!
       puts clip.save ? "Clip #{name} in #{group} saved!" : "Problem saving #{name} in #{group}"
-    end
-  end
-
-  def import_posts(base, entries)
-    entries.each do |entry|
-      name = entry
-      path = File.join(base, entry)
-      post = Post.new
-      post.title = name
-      File.open(path, "r") {|f| post.body = f.readlines.join}
-      puts post.save ? "Post #{name} saved!" : "Problem saving post #{name}"
     end
   end
 end

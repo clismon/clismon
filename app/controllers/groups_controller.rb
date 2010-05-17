@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  layout 'posts'
+  layout 'admin'
   before_filter :load_groups
   inherit_resources
 
