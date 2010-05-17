@@ -1,16 +1,23 @@
 <table>
+  <thead>
+    <tr>
+      <td>Imágen</td>
+      <td style="width: 10em;">Nombre</td>
+      <td>Tamaños</td>
+      <td>Fecha</td>
+      <td></td>
+    </tr>
+  </thead>
   <% clips.each do |clip| %>
     <tr class="<%= cycle('even', 'odd') %>">
-      <td><%= clip.position %></td>
-      <td><%= image_tag clip.media.url(:thumb) %></td>
+      <td><%= link_to image_tag( clip.media.url(:thumb) ), clip.media.url  %></td>
       <td><%= clip.name %></td>
-      <td><%= clip.group %></td>
-      <td><%= clip.media.url %></td>
       <td><%= number_to_human_size(clip.media.size) %> 
-        <%= clip.media.content_type %> (<%= clip.width %>x<%= clip.height %>)</td>
+        <%= clip.media.content_type %><br/>
+        (<%= clip.width %> x <%= clip.height %> px)</td>
       <td>subido hace <%= distance_of_time_in_words_to_now clip.created_at %></td>
-      <td>
-        <%= link_to 'Ver', clip.media.url %> |
+      <td class="actions">
+        <%= link_to 'Ver', clip.media.url %> 
         <%= link_to 'Borrar', clip, :confirm => 'Estás seguro!!!? No se puede deshacer!!', :method => :delete %>
       </td>
     </tr>

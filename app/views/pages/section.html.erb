@@ -10,10 +10,10 @@
     #placeholder {position: absolute; z-index: 20;
                   left: 50%; top: 50%;
     }
-    #placeholder img {border: 10px solid white;}
+    #placeholder img {border: 10px solid white; background-color: white;}
 
     #controls {position: fixed; left: 0; right: 0; bottom: 0; height: 200px;
-            text-align: center; opacity: 1; z-index: 100;}
+            text-align: center; opacity: 1; z-index: 100; }
   </style>
 
   <script type="text/javascript">
@@ -24,14 +24,12 @@
   <% end %>
 
     $(function () {
-      $("#controls").fadeOut();
-      $.clismon.slideshow.bg('<%= @group.background_url %>', '<%=  @group.resize_method %>',
-      {width: <%= @group.background_width %>, height: <%=  @group.background_height %> });
+      $("#controls").controls();
+      $.clismon.background('<%= @group.background_url %>', <%= @group.background_width %>, <%=  @group.background_height %> );
       $.clismon.slideshow.start();
 
       $("#previous").click(function() {$.clismon.slideshow.prev(); return false;})
       $("#next").click(function() {$.clismon.slideshow.next(); return false;})
-      $.clismon.slideshow.controls('#controls')
     });
   </script>
 

@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(:version => 20091125113330) do
   create_table "clips", :force => true do |t|
     t.string   "name"
     t.integer  "group_id"
-    t.integer  "position"
     t.integer  "width",              :default => 0
     t.integer  "height",             :default => 0
     t.string   "media_file_name"
@@ -25,26 +24,18 @@ ActiveRecord::Schema.define(:version => 20091125113330) do
     t.datetime "updated_at"
   end
 
+  add_index "clips", ["name"], :name => "index_clips_on_name"
+
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.string   "title"
     t.string   "color",         :default => "#000"
     t.boolean  "section",       :default => true
-    t.string   "resize_method", :default => "height"
     t.integer  "background_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "groups", ["name"], :name => "index_groups_on_name"
-
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.string   "body"
-    t.string   "content_type", :default => "text/html"
-    t.string   "state",        :default => "published"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

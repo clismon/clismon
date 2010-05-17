@@ -1,7 +1,6 @@
 
   <% title t('.title', :group => @group.title) %>
 
-  <%= render @group %>
+  <%#= render @group %>
 
-  <h2><%= t('.clips') %></h2>
   <%= render :partial => 'clips/clips', :object => @group.clips %>

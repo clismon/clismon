@@ -5,7 +5,6 @@ class CreateGroups < ActiveRecord::Migration
       t.string :title, :required => true
       t.string :color, :required => true, :default => '#000'
       t.boolean :section, :default => true
-      t.string :resize_method, :required => true, :default => 'height'
       t.references :background
       t.timestamps
     end

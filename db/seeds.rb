@@ -1,23 +1,25 @@
 
 class Importer
 
-  def initialize
+  def seed
     clean_database
     prepare_directories
 
-    fondos = Group.create!(:name => 'fondos', :section => false)
-
     @images = RAILS_ROOT + "/content/images/"
-    @posts = RAILS_ROOT + "/content/posts"
-    
-    import_images(@images, load_entries(@images, 'jpg'))
 
-    @vacio = Clip.find_by_group_id_and_name(fondos.id, 'vacio')
+    Group.create!(:name => 'fondos', :title => 'fondos', :section => false)
+
+    import_images(@images, load_entries(@images))
+    set_fondos
+  end
+
+  def set_fondos
+    fondos = Group.find_by_name('fondos')
+    fondos.update_attribute(:section, false)
     Group.all.each do |group|
-      group.update_attribute(:background_id, @vacio.id)
+      fondo = Clip.find_by_group_id_and_name(fondos.id, group.name)
+      group.update_attribute(:background_id, fondo.id) if fondo
     end
-
-    
 
   end
 
@@ -25,7 +27,6 @@ class Importer
     #ActiveRecord::Base.logger = Logger.new(STDOUT)
     Group.destroy_all
     Clip.destroy_all
-    Post.destroy_all
   end
 
   def prepare_directories
@@ -37,21 +38,23 @@ class Importer
   end
 
 
-  def load_entries(path, extension)
+  def load_entries(path)
     entries = []
-    Dir.chdir(path) { entries = Dir["**/*.#{extension}"] }
+    Dir.chdir(path) { entries = Dir["**/*.jpg", "**/*.gif", "**/*.png"] }
     entries
   end
 
   def import_images(base, entries)
     entries.each do |entry|
+      puts "Process: #{entry}"
       lastBar = entry.rindex('/')
       group = entry[0..(lastBar - 1)]
       name = entry[(lastBar + 1)..-1]
       path = File.join(base, entry)
       clip = Clip.create
       clip.media = File.new(path)
-      clip.name = name[0..(name.rindex('.') - 1)].gsub(/-/, ' ')
+      realname = name[0..(name.rindex('.') - 1)].gsub(/-/, ' ')
+      clip.name = realname
       clip.group = Group.find_or_create_by_name(group)
       clip.media.reprocess!
       puts clip.save ? "Clip #{name} in #{group} saved!" : "Problem saving #{name} in #{group}"
@@ -60,5 +63,5 @@ class Importer
 end
 
 
-Importer.new
+Importer.new.seed
 

@@ -3,7 +3,6 @@ class CreateClips < ActiveRecord::Migration
     create_table :clips do |t|
       t.string :name, :required => true
       t.references :group, :required => true
-      t.integer :position
       t.integer :width, :default => 0
       t.integer :height, :default => 0
       t.string :media_file_name
@@ -12,6 +11,8 @@ class CreateClips < ActiveRecord::Migration
       t.datetime :media_updated_at
       t.timestamps
     end
+
+        add_index :clips, :name
   end
 
   def self.down

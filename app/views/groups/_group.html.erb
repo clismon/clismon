@@ -7,7 +7,6 @@
   <li><label><%= Group.human_attribute_name(:name)%>: </label><%= group.name %></li>
   <li><label><%= Group.human_attribute_name(:color)%>: </label><%= group.color %></li>
   <li><label><%= Group.human_attribute_name(:section)%>: </label><%= group.section? ? 'Sí' : 'No' %></li>
-  <li><label><%= Group.human_attribute_name(:resize_method)%>: </label><%= group.resize_method %></li>
   <% if group.background_id %>
     <li><label><%= Group.human_attribute_name(:background)%>: </label>
       <%= group.background.name %> (<%= number_to_human_size(group.background.media.size) %>

@@ -1,10 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'pages', :action => 'portada'
-
-  map.blog '/bueh', :controller => 'buah', :action => 'index'
-  map.buah '/bueh/:id', :controller => 'buah', :action => 'show'
-  map.resources :posts, :as => 'blog'
   map.resources :clips
 
   map.resources :groups, :as => 'admin' do |group|
