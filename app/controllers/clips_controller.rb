@@ -13,5 +13,11 @@ class ClipsController < ApplicationController
       success.html {redirect_to clips_path}
       failure.html { render :action => 'index'}
     end
+    expire_section @clip.group
+  end
+
+  def update
+    update!
+    expire_section @clip.group
   end
 end

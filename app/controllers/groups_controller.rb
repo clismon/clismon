@@ -3,7 +3,6 @@ class GroupsController < ApplicationController
   before_filter :load_groups
   inherit_resources
 
-
   def show
     @group = Group.find_by_name(params[:id])
     show!
@@ -17,6 +16,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find_by_name(params[:id])
     update!
+    expire_section @group
   end
 
   private

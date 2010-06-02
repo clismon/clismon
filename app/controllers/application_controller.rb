@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  private
+  def expire_section(group)
+    expire_page :controller => 'pages', :action => 'section', :id => group
+  end
 end
