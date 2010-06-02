@@ -35,7 +35,8 @@ after "deploy", "deploy:restart"
 namespace :config do
   desc "copy shared configurations to current"
   task :copy_shared_configurations, :roles => [:app] do
-    run "ln -sf #{shared_path}/cache #{release_path}/public/cache"
+    # clear cache on each deploy
+    #run "ln -sf #{shared_path}/cache #{release_path}/public/cache"
     run "ln -nsf #{shared_path}/content #{release_path}/content"
     run "ln -nsf #{shared_path}/miscosillas #{release_path}/public/miscosillas"
     %w[database.yml].each do |f|
@@ -43,6 +44,7 @@ namespace :config do
     end
   end
 end
+
 
 
 namespace :deploy do

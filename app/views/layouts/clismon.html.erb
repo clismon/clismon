@@ -5,6 +5,9 @@
     <title><%= yield :title %> &#9733 Clismón</title>
     <%= render :partial => '/layouts/head' %>
     <%= stylesheet_link_tag 'clismon.css' %>
+    <!--[if lt IE 7.]>
+<script defer type="text/javascript" src="/javascripts/pngfix.js"></script>
+<![endif]-->
     <%= yield :head %>
   </head>
   <body>
