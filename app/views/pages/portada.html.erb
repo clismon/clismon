@@ -9,11 +9,13 @@
     #background {z-index:1;}
     #playground {width: 200px; z-index: 1000;
     }
-    .area {position: absolute; z-index: 200; text-indent: -1000px; overflow: hidden;
+    a.area {display: block; position: absolute; text-indent: -1000px; overflow: hidden; border: 1px solid blue;
+            background-color: transparent;
     }
     .red {
       border: 1px solid red; opacity: 0.3;
     }
+    img, div { behavior: url(iepngfix.htc) }
   </style>
 
   <script type="text/javascript">
