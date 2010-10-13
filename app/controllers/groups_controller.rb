@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   layout 'admin'
-  before_filter :load_groups
+  before_filter :load_groups, :authenticate
   inherit_resources
 
   def show

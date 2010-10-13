@@ -2,6 +2,7 @@ class ClipsController < ApplicationController
   layout 'posts'
   inherit_resources
   actions :index, :create, :destroy
+  before_filter :authenticate
 
   def index
     @clip = Clip.new

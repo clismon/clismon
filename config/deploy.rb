@@ -76,6 +76,21 @@ namespace :backup do
     `rm #{File.dirname(__FILE__)}/../backups/#{filename}`
     # delete file
   end
+
+  task :download, :roles => :db, :only => { :primary => true } do
+    filename = "#{application}.dump.sql"
+    file = "/tmp/#{filename}"
+    on_rollback { delete file }
+    db = YAML::load(ERB.new(IO.read(File.join(File.dirname(__FILE__), 'database.yml'))).result)
+    production = db['production']
+    run "mysqldump -u #{production['username']} --password=#{production['password']} #{production['database']} > #{file}"  do |ch, stream, data|
+      puts data
+    end
+    get file, "tmp/#{filename}"
+    #`mysql -u root -p booka < tmp/#{filename}`
+    # delete file
+  end
+
 end
 
 desc "Backup the database before running migrations"
