@@ -20,7 +20,7 @@
 
     // images
   <% @group.clips.each do |clip| %>
-      $.clismon.slideshow.add('<%= clip.media.url %>', <%= clip.width %>, <%= clip.height %>);
+      $.clismon.slideshow.add(<%= clip.id %>, '<%= clip.name %>',  '<%= clip.media.url %>', <%= clip.width %>, <%= clip.height %>);
   <% end %>
 
     $(function () {
@@ -28,19 +28,19 @@
       $.clismon.background('<%= @group.background_url %>', <%= @group.background_width %>, <%=  @group.background_height %> );
       $.clismon.slideshow.start();
 
-      $("#previous").click(function() {$.clismon.slideshow.prev(); return false;})
-      $("#next").click(function() {$.clismon.slideshow.next(); return false;})
+      $("#previous_slide").click(function() {$.clismon.slideshow.prev(); return false;})
+      $("#next_slide").click(function() {$.clismon.slideshow.next(); return false;})
     });
   </script>
 
 <% end -%>
 
 <div id="wrap">
-  <div id="placeholder">&nbsp; </div>
+  <a id="placeholder" href="#">&nbsp; </a>
 </div>
 <div id="controls">
-  <%= link_to( image_tag('compartido/anterior-peq.png'), '#', :id => 'previous') %>
+  <%= link_to( image_tag('compartido/anterior-peq.png'), '#', :id => 'previous_slide') %>
   <%= link_to( image_tag('compartido/atras-peq2.png'), '/') %>
-  <%= link_to( image_tag('compartido/siguiente-peq.png'), '#', :id => 'next') %>
+  <%= link_to( image_tag('compartido/siguiente-peq.png'), '#', :id => 'next_slide') %>
 </div>
 
