@@ -2,7 +2,7 @@
 es:
   activerecord:
     models:
-      clip: "clip"
+      clip: "imágen"
       post: "entrada"
       group: "grupo"
     attributes:
@@ -11,6 +11,9 @@ es:
         title: "Título"
         section: "Es una sección"
         resize_method: "Cómo se pone el fondo"
+      clip:
+        name: "Nombre"
+        media: "Fichero"
 
   formtastic:
     actions:

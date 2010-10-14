@@ -1,6 +1,4 @@
-class GroupsController < ApplicationController
-  layout 'admin'
-  before_filter :load_groups, :authenticate
+class GroupsController < AdminController
   inherit_resources
 
   def show
@@ -19,8 +17,5 @@ class GroupsController < ApplicationController
     expire_section @group
   end
 
-  private
-  def load_groups
-    @groups = Group.all
-  end
+
 end

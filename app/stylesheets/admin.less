@@ -9,7 +9,7 @@
 @rojo: #990000;
 @verde: #008800;
 
-@serif: Georgia, Cambria, Times, serif;
+@serif: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Verdana, Tahoma, sans-serif;
 @sans: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Verdana, Tahoma, sans-serif;
 @font-small: 80%;
 
@@ -25,6 +25,9 @@ a:hover {text-decoration: underline;}
 
 h1, h2, h3, h4 {font-family: @serif;}
 h2 {font-size: 150%; margin: 1em 0 0.5em 0;}
+
+.rounded {-moz-border-radius: 5px; border-radius: 5px; -webkit-border-radius: 5px;}
+div.info {margin: 10px; color: @grisoscuro;}
 
 #user {text-align: right; width: @page_width; margin: 30px auto 3px auto; }
 #legal {clear: both; margin-top: 3px; height: 7em; font-size: 80%; letter-spacing: 0.2em; text-align: center; font-family: @sans; color: @grisoscuro;}
@@ -52,12 +55,15 @@ h2 {font-size: 150%; margin: 1em 0 0.5em 0;}
 #top h1 {font-size: 200%; margin-bottom: 10px;}
 #top h2 {font-size: 130%;margin-bottom: 5px;}
 
-.actions {margin-bottom: 5px;font-family: @sans; font-size: @font-small;}
-.actions a {color: @grisoscuro; margin-right: 1em;}
+.actions {margin-bottom: 5px;font-family: @sans; }
+.actions a {color: @grisoscuro; margin-right: 1em; background-color: @grisclaro; padding: 3px 10px; .rounded;}
+.actions a:hover {color: black;}
 
 table tr.odd {background-color: @grisclaro;}
+table tr.odd .actions a {background-color: white;}
 table td {padding: 5px 5px;}
-
+td.actions {font-size: @font-small;}
+td.actions a {margin-bottom: 5px;}
 ul.group {padding: 1em; background-color: @grisclaro;}
 ul.group li {margin: 5px 0;}
 
@@ -65,3 +71,10 @@ fieldset li {width: 100%; overflow: hidden; margin: 5px 0;}
 fieldset li label {width: 9em; text-align: right; float: left; padding-right: 1em;}
 fieldset li.boolean input {margin-left: 9em; margin-right: 0.5em;}
 fieldset li.boolean label {padding-left: 1em; float: none;}
+form div.info {margin-left: 10em; color: @grisoscuro; line-height: 1.5em;}
+form div.info h3 {font-size: 120%; color: black; margin-top: 1em;}
+form input[type=text] {border: 1px solid black; padding: 2px;}
+form input[type=submit] {padding: 3px 10px;}
+fieldset.buttons {margin-left: 10em; margin-top: 20px;}
+fieldset.buttons ol li {display: block; float: left;}
+fieldset.buttons a {padding: 3px 10px;}

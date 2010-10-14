@@ -12,11 +12,4 @@ class ApplicationController < ActionController::Base
   def expire_section(group)
     expire_page :controller => 'pages', :action => 'section', :id => group
   end
-
-
-def authenticate
-  authenticate_or_request_with_http_basic do |username, password|
-    username == APP_CONFIG['username'] && password == APP_CONFIG['password']
-  end
-end
 end

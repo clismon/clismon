@@ -1,6 +1,13 @@
 
-  <% title t('.title', :group => @group.title) %>
+<% title t('.title', :group => @group.title) %>
 
-  <%#= render @group %>
+<div class="actions">
+  <%= link_to 'Añadir imágen a este grupo', new_group_clip_path(@group) %>
+  <%= link_to 'Ver este grupo en la web', {:controller => 'pages', :action => 'section', :id => @group.title} %>
+</div>
 
-  <%= render :partial => 'clips/clips', :object => @group.clips %>
+<div class="info">
+<p>Las imágenes se ordenan alfabeticamente. Puedes añadir una que se llame, por ejemplo, delirios01b que iría entre delirios01 y delirios02</p>
+</div>
+
+<%= render :partial => 'clips/clips', :object => @group.clips %>

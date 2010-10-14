@@ -17,8 +17,9 @@
         (<%= clip.width %> x <%= clip.height %> px)</td>
       <td>subido hace <%= distance_of_time_in_words_to_now clip.created_at %></td>
       <td class="actions">
+        <%= link_to 'Editar', edit_group_clip_path(clip.group, clip) %>
         <%= link_to 'Ver', clip.media.url %> 
-        <%= link_to 'Borrar', clip, :confirm => 'Estás seguro!!!? No se puede deshacer!!', :method => :delete %>
+        <%= link_to 'Borrar', group_clip_path(clip.group, clip), :confirm => 'Estás seguro!!!? No se puede deshacer!!', :method => :delete %>
       </td>
     </tr>
   <% end %>

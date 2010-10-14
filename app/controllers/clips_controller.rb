@@ -1,8 +1,6 @@
-class ClipsController < ApplicationController
-  layout 'posts'
+class ClipsController < AdminController
   inherit_resources
-  actions :index, :create, :destroy
-  before_filter :authenticate
+  belongs_to :group
 
   def index
     @clip = Clip.new
@@ -11,14 +9,25 @@ class ClipsController < ApplicationController
 
   def create
     create! do |success, failure|
-      success.html {redirect_to clips_path}
-      failure.html { render :action => 'index'}
+      success.html {redirect_to @group}
+      failure.html { render :action => 'new'}
     end
     expire_section @clip.group
   end
 
   def update
-    update!
-    expire_section @clip.group
+    update! do |success, failure|
+      success.html {redirect_to @group}
+    end
+      expire_section @clip.group
+  end
+
+  def destroy
+    destroy! {redirect_to @group}
+  end
+
+  protected
+  def begin_of_association_chain
+    @group = Group.find_by_name(params[:group_id])
   end
 end

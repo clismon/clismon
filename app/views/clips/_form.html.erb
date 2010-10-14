@@ -1,0 +1,23 @@
+<% semantic_form_for [@group, @clip], :html => { :multipart => true } do |form|  %>
+  <%= form.error_messages %>
+  <% form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :group_id, :as => :hidden %>
+    <div class="info">
+      <% if @clip.media? %>
+        <h3>Fichero actual:</h3>
+        <p>(pincha para ver la imágen a tamaño real. Pulsa Ctrl al mismo tiempo y lo verás en otra pestaña)</p>
+        <%= link_to image_tag( @clip.media.url(:thumb) ), @clip.media.url  %>
+        <p>Tamaño <%= @clip.width %> x <%= @clip.height %> pixels</p>
+        <h3>Sustituir fichero:</h3>
+      <% else %>
+        <h2>Añadir el fichero:</h2>
+      <% end %>
+    </div>
+    <%= form.input :media %>
+  <% end %>
+  <% form.buttons do %>
+    <%= form.commit_button %>
+    <%= link_to 'Cancelar', @group %>
+  <% end %>
+<% end %>

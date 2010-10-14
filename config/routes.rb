@@ -1,10 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'pages', :action => 'portada'
-  map.resources :clips
 
   map.resources :groups, :as => 'admin' do |group|
-    map.resources :clips, :controller => 'group_clips', :as => 'clips'
+    group.resources :clips, :controller => 'clips', :as => 'clips'
   end
 
   map.enlaces '/lecrou', :controller => 'pages', :action => 'section', :id => 'lecrou'
