@@ -39,7 +39,7 @@ namespace :config do
     #run "ln -sf #{shared_path}/cache #{release_path}/public/cache"
     run "ln -nsf #{shared_path}/content #{release_path}/content"
     run "ln -nsf #{shared_path}/miscosillas #{release_path}/public/miscosillas"
-    %w[database.yml].each do |f|
+    %w[database.yml clismon.yml].each do |f|
       run "ln -nsf #{shared_path}/config/#{f} #{release_path}/config/#{f}"
     end
   end
