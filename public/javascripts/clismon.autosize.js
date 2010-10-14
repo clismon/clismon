@@ -1,5 +1,9 @@
 (function($) {
 
+    var config = $.autosize = {
+        active: true
+    }
+
     $.fn.autosize = function(options) {
         var defaults = {
             size: 100,
@@ -14,12 +18,14 @@
     };
 
     $(window).resize(function() {
-        var self = $(this);
-        $(".autosize").each(function() {
-            var image = $(this);
-            var data = image.data('autosize');
-            methods[data['method']](self, image, data);
-        });
+        if (config.active) {
+            var self = $(this);
+            $(".autosize").each(function() {
+                var image = $(this);
+                var data = image.data('autosize');
+                methods[data['method']](self, image, data);
+            });
+        }
     });
 
     var setup = {

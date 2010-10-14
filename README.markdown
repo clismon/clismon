@@ -17,5 +17,7 @@
 ### Misc
 (http://iain.nl/2009/05/writing-yaml-files/)
 
+### Transparent backgrounds for the horrible browser
+http://siteboxpro.blogspot.com/2009/10/empty-anchor-tag-is-not-clickable.html
 
 Thanks to all the people who help in internet!!
