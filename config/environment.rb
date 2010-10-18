@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   config.gem 'inherited_resources', :source => 'http://gemcutter.org'
   config.gem 'paperclip', :version => '2.3.1.1', :source => 'http://gemcutter.org'
   config.gem 'formtastic'
+  config.gem 'jammit'
   
   config.action_controller.resources_path_names = { :new => 'nuevo', :edit => 'cambiar' }
   config.action_controller.page_cache_directory = RAILS_ROOT + "/public/cache/"

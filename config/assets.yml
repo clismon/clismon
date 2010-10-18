@@ -1,0 +1,7 @@
+
+javascripts:
+  clismon:
+    - public/javascripts/jquery.address-1.3.min.js
+    - public/javascripts/clismon.common.js
+    - public/javascripts/clismon.autosize.js
+    - public/javascripts/clismon.slideshow.js

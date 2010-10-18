@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.elotromundo '/tierra', :controller => 'pages', :action => 'section', :id=> 'tierra'
   map.elotromundo '/encargos', :controller => 'pages', :action => 'section', :id=> 'encargos'
   map.elotromundo '/muvirecor', :controller => 'pages', :action => 'section', :id=> 'muvirecor'
-
-  map.connect ':controller/:action/:id'
+  
+  Jammit::Routes.draw(map)
+  # map.connect ':controller/:action/:id'
 end

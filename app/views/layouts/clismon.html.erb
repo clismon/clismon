@@ -8,8 +8,8 @@
     <!--[if lt IE 9]>
     <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
     <![endif]-->
-    <%= render :partial => '/layouts/head' %>
     <%= stylesheet_link_tag 'clismon.css' %>
+    <%= render :partial => '/layouts/head' %>
     <!-- script type="text/javascript" src="iepngfix_tilebg.js"></script -->
 
     <%= yield :head %>
@@ -33,5 +33,12 @@
  <![endif]-->
 
     <%= yield %>
+    <div class="license" style="display: block; width: 1px; height: 1px; position: absolute; left: -10px; top: -10px; overflow: hidden;">
+      <h2>Author</h2>
+      <p>Industrias clismón por Miguel Brieva.</p>
+      <h2>License</h2>
+      <p>Todos los contenidos de esta web tienen la siguiente licencia:</p>
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/es/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/3.0/es/88x31.png" /></a><br />Esta obra est&#225; bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/es/">licencia de Creative Commons</a>.
+    </div>
     </body>
 </html>

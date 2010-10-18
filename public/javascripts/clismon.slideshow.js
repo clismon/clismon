@@ -144,7 +144,8 @@
         });
         image.hide();
         image.attr('id', 'current');
-        $("#placeholder").empty().append(image);
+        $("#placeholder").empty().append(image).attr('href', data['path']);
+
         resize_slide();
     }
 
@@ -165,5 +166,13 @@
         image.css('margin-top', -0.5 * fh - 10);
         image.css('margin-left', -0.5 * fw);
     }
+
+    $(function() {
+        $('a[rel*=external]').click( function() {
+            window.open(this.href);
+            return false;
+        });
+    });
+
 
 })(jQuery);
